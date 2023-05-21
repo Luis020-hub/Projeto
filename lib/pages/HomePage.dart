@@ -1,8 +1,17 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: file_names
 
-class HomePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:projeto/components/Header.dart';
+import 'package:projeto/components/Search.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,20 +19,42 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
-          'Delivery',
+          'Safe Home Delivery',
           style: TextStyle(),
         ),
       ),
-      body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(20),
-          children: const [
-            Center(
-              child: Text('Olá'),
-            )
-          ],
+      body: ListView(
+        padding: const EdgeInsets.only(
+          left: 20,
+          top: 10,
+          right: 20,
         ),
+        children: [
+          const Header(),
+          const Search(),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Top selling products ',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Text(
+                  'See all',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
